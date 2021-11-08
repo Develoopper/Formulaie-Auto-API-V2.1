@@ -72,7 +72,7 @@ $(function() {
         const plural = routeArray[routeArray.length - 1];
         optionsValues = [...jsonRes[plural].map(x => x[ids[index + 1]])].sort();
         for (const optionsValue of optionsValues)
-          html += `<option value="${optionsValue}">${capitalize(optionsValue)}</option>`;
+          html += `<option value="${optionsValue}">${isNaN(optionsValue) ? capitalize(optionsValue) : optionsValue}</option>`;
       }
 
 
@@ -84,9 +84,9 @@ $(function() {
 
   $('#form input:radio').on('change', function(e) {
     if (e.target.id === e.target.name + 'Oui')
-      $(`#form div[name=${e.target.name}]`).css('display','block');
+      $(`#form div[name=${e.target.name}]`).css('display', 'block');
     else
-      $(`#form div[name=${e.target.name}]`).css('display','none');
+      $(`#form div[name=${e.target.name}]`).css('display', 'none');
   })
     
   $('#submit').on('click', function() {
